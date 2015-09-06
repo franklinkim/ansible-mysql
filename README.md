@@ -42,20 +42,20 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```
 # mysql_databases:
-#   - name: db1
-#   - name: db2
-#       encoding: utf8
-#     collation: utf8_general_ci
-#   - name: db3
-#     state: absent
+#   - name:       xxx
+#     collation:  xxx
+#     encoding:   xxx
+#     state:      xxx
+#     target:     xxx
 #
 # mysql_users:
-#   - name: user1
-#   - name: user2
-#     priv: *.*:ALL
-#       password: secret
-#   - name: user3
-#     state: absent
+#   -  name:             xxx
+#      append_privs:     xxx
+#      host:             xxx
+#      password:         xxx
+#      priv:             xxx
+#      state:            xxx
+#      update_password:  xxx
 #
 
 # packages name (versions)
@@ -70,7 +70,7 @@ mysql_service_state: started
 
 # Basic settings
 mysql_port: 3306
-mysql_bind_address: "0.0.0.0"
+mysql_bind_address: "127.0.0.1"
 mysql_root_password: 'pass'
 mysql_language: '/usr/share/mysql/'
 
@@ -115,6 +115,8 @@ mysql_users: []
   roles:
     - franklinkim.mysql
   vars:
+    mysql_bind_address: "0.0.0.0"
+    mysql_root_password: 'pass'
     mysql_databases:
       - name: db1
       - name: db2
@@ -124,9 +126,10 @@ mysql_users: []
         state: absent
     mysql_users:
       - name: user1
+        password: pass1
       - name: user2
-        priv: *.*:ALL
-        password: secret
+        priv: '*.*:ALL'
+        password: pass2
       - name: user3
         state: absent
 ```

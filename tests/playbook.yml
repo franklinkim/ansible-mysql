@@ -5,6 +5,8 @@
   roles:
     - franklinkim.mysql
   vars:
+    mysql_bind_address: "0.0.0.0"
+    mysql_root_password: 'pass'
     mysql_databases:
       - name: db1
       - name: db2
@@ -14,8 +16,9 @@
         state: absent
     mysql_users:
       - name: user1
+        password: pass1
       - name: user2
-        priv: *.*:ALL
-        password: secret
+        priv: '*.*:ALL'
+        password: pass2
       - name: user3
         state: absent
