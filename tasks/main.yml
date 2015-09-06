@@ -1,0 +1,30 @@
+---
+
+- include: install.yml
+  tags:
+    - database:sql
+    - mysql
+    - install
+    - mongodb-install
+
+- include: config.yml
+  tags:
+    - database:sql
+    - mysql
+    - config
+    - mongodb-config
+
+- include: manage.yml
+  tags:
+    - database:sql
+    - mysql
+    - manage
+    - mongodb-manage
+
+- include: service.yml
+  tags:
+    - database:sql
+    - mysql
+    - service
+    - mongodb-service
+

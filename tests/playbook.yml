@@ -1,0 +1,21 @@
+---
+
+- hosts: all
+  sudo: yes
+  roles:
+    - franklinkim.mysql
+  vars:
+    mysql_databases:
+      - name: db1
+      - name: db2
+        encoding: utf8
+        collation: utf8_general_ci
+      - name: db3
+        state: absent
+    mysql_users:
+      - name: user1
+      - name: user2
+        priv: *.*:ALL
+        password: secret
+      - name: user3
+        state: absent

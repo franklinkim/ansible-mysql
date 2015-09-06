@@ -1,0 +1,10 @@
+---
+
+- name: Managing databases
+  mysql_db:
+    collation: 	"{{ item.collation | default(omit) }}"
+    encoding: 	"{{ item.encoding | default(omit) }}"
+    name: 			"{{ item.name }}"
+    state: 			"{{ item.encoding | default(omit) }}"
+    target: 		"{{ item.target | default(omit) }}"
+  with_items: mysql_databases
